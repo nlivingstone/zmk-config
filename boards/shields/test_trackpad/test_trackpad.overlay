@@ -1,0 +1,27 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/ {
+};
+
+&spi2 {
+	compatible = "nordic,nrf-spim";
+	status = "okay";
+	sck-pin = <7>;
+	mosi-pin = <8>;
+	miso-pin = <9>;
+	cs-gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+	
+	cirque_trackpad: cirque_trackpad@0 {
+		compatible = "cirque,pinnacle";
+		reg = <0>;
+		label = "CIRQUE_TRACKPAD";
+		spi-max-frequency = <8000000>;
+		irq-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+		status = "okay";
+	};
+};
+
